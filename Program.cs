@@ -1,24 +1,23 @@
-﻿// Задача 70:** Напишите программу, которая на вход принимает два числа и выдаёт первые N чисел, для которых каждое следующее равно
-// сумме двух предыдущих.
-// 3 и 4, N = 5 -> 3 4 7 11 18
-// 6 и 10, N = 4 -> 6 10 16 26
+﻿// Задача 71:** В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». Покажите все слова, состоящие из n 
+// букв, которые можно построить из букв этого алфавита.
+// n = 2 -> аа, ии, сс, вв, аи, иа, ис, си, ас, са,
+// ав, ва, ви, ив, св, вс
+
 using static System.Console;
-Clear();
 
-WriteLine("Введите три числа через пробел: ");
-string[] str = ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-int numA = int.Parse(str[0]);
-int numB = int.Parse(str[1]);
-int N = int.Parse(str[2]);
+Write("Введите число: ");
+int numN = int.Parse(ReadLine());
+string str = "аисв";
 
-RecursMethod(numA, numB, N);
+RecursMethod(numN,str,"");
 
-void RecursMethod(int numA, int numB, int N)
+void RecursMethod(int numN, string str, string alf)
 {
-   if (N > 0)
+   if(numN == 0) Write($"{alf} ");
+   else 
+   foreach (char it in str)
    {
-      Write($"{numA} ");
-      RecursMethod(numB, numA + numB, N-1);
+      RecursMethod(numN-1, str, alf+it);
    }
 }
 
