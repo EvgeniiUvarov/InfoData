@@ -1,24 +1,32 @@
-﻿// Задача 71:** В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». Покажите все слова, состоящие из n 
-// букв, которые можно построить из букв этого алфавита.
-// n = 2 -> аа, ии, сс, вв, аи, иа, ис, си, ас, са,
-// ав, ва, ви, ив, св, вс
+﻿// Задача 72:** Заданы 2 массива: info и data. В массиве info хранятся двоичные представления нескольких чисел (без разделителя). 
+// В массиве data хранится информация о количестве бит, которые занимают числа из массива info. Напишите программу, которая составит
+// массив десятичных представлений чисел массива data с учётом информации из массива info.
+
+// Комментарий: первое число занимает 2 бита (01 -> 1); второе число занимает 3 бита (111 -> 7); третье число занимает 3 бита (000 -> 0; четвёртое число занимает 1 бит (1 -> 1)
+// Тимур: входные данные:
+// data = {0, 1, 1, 1, 1, 0, 0, 0, 1 }
+// info = {2, 3, 3, 1 }
+// выходные данные:
+// 1, 7, 0, 1
 
 using static System.Console;
 
-Write("Введите число: ");
-int numN = int.Parse(ReadLine());
-string str = "аисв";
+WriteLine(String.Join(", ", PrintResult(new int[]{0, 1, 1, 1, 1, 0, 0, 0, 1}, new int[]{2, 3, 3, 1})));
 
-RecursMethod(numN,str,"");
-
-void RecursMethod(int numN, string str, string alf)
+double[] PrintResult(int[]dat, int[] inf)
 {
-   if(numN == 0) Write($"{alf} ");
-   else 
-   foreach (char it in str)
+   double[] result = new double[inf.Length];
+   int count = 0;
+   for (int i = 0; i < inf.Length; i++)
    {
-      RecursMethod(numN-1, str, alf+it);
+      for (int j = 0; j < inf[i]; j++)
+      {
+         result[i] += dat[count] * Math.Pow(2, inf[i]-j-1);
+         count++;
+      }
    }
+   return result;
 }
+
 
 
