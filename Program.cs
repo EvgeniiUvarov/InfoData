@@ -28,5 +28,20 @@ double[] PrintResult(int[]dat, int[] inf)
    return result;
 }
 
+//WriteLine(String.Join(", ", GetResult(new int[]{0, 1, 1, 1, 1, 0, 0, 0, 1}, new int[]{2, 3, 3, 1})));
+
+// int[] GetResult(int[] data, int[] inf)
+// {
+//    int[] result = new int[inf.Length];
+//    string subData = String.Join("",data);
+//    for (int i = 0; i < inf.Length; i++)
+//    {
+//       string str = subData.Substring(0, inf[i]);
+//       result[i] = Convert.ToInt32(str, 2);
+//       subData = subData.Remove(0, inf[i]);
+//    }
+//    return result;
+// }
+
 
 
